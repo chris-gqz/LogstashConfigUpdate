@@ -48,7 +48,7 @@ def updateConfig(configFilePath, logFilePath, fileNamesDict):
 
 
 # 判断索引名称是否都包含文件名称，不包含则更新配置文件
-def UpDateConfigIfNeed(logFilePath,fileNamesDict,configFilePath,indexNamesDict):
+def upDateConfigIfNeed(logFilePath,fileNamesDict,configFilePath,indexNamesDict):
     for fileName in fileNamesDict:
         if not indexNamesDict.has_key(fileName):
             print("需要更新！")
@@ -66,7 +66,7 @@ FileNamesDict=getFileNamesByLogFile(LogFilePath)
 ConfigFilePath='/Users/rylink/ELK/logstash-7.9.3/logstashUpdate.conf'
 IndexNamesDict=getIndexNamesByConfig(ConfigFilePath)
 
-UpDateConfigIfNeed(LogFilePath,FileNamesDict,ConfigFilePath,IndexNamesDict)
+upDateConfigIfNeed(LogFilePath,FileNamesDict,ConfigFilePath,IndexNamesDict)
 
 
 
