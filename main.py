@@ -33,10 +33,20 @@ def updateConfig(configFilePath, logFilePath, fileNamesDict):
     output = ""
 
     for fileName in fileNamesDict:
-        inputStr = "input { \n file { \n path => [\"" + logFilePath + "/" + fileName + ".*" + "\"] \n type => \"" + fileName + "\" \n}\n}\n"
+        inputStr = "input { \n " \
+                        "file { \n " \
+                            "   path => [\"" + logFilePath + "/" + fileName + ".*" + "\"] \n " \
+                            "   type => \"" + fileName + "\" \n" \
+                         "}\n" \
+                      "}\n"
         input += inputStr
 
-        outputStr = "if [type] == \"" + fileName + "\" { \n elasticsearch{ \n hosts => [\"http://localhost:9200\"] \n index => \"" + fileName.lower() + "\"\n}\n}\n"
+        outputStr = "if [type] == \"" + fileName + "\" { \n " \
+                        "elasticsearch{ \n " \
+                             "  hosts => [\"http://localhost:9200\"] \n " \
+                             "  index => \"" + fileName.lower() + "\"\n" \
+                          "}\n" \
+                    "}\n"
         output += outputStr
 
     fileInfo.write(input)
