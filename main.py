@@ -7,7 +7,6 @@ def getFileNamesByLogFile(logFilePath):
 
     for _, _, fileNames in os.walk(logFilePath):
         for fileName in fileNames:
-            # value 怎么设置bool  暂定为1
             fileNamesDict[fileName.split(".")[0]]="1"
 
     return fileNamesDict
