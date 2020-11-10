@@ -24,18 +24,18 @@ def getIndexNamesByConfig(configFilePath):
     return  indexNamesDict
 
 # 更新配置文件
-def updateConfig(ConfigFilePath, LogFilePath, FileNamesDict):
-    fileInfo = open(ConfigFilePath,"w")
+def updateConfig(configFilePath, logFilePath, fileNamesDict):
+    fileInfo = open(configFilePath,"w")
     fileInfo.truncate()
 
     input = ""
     output = ""
 
-    for FileName in FileNamesDict:
-        inputStr = "input { \n file { \n path => [\""+LogFilePath+"/"+FileName+".*"+"\"] \n type => \""+FileName+"\" \n}\n}\n"
+    for fileName in fileNamesDict:
+        inputStr = "input { \n file { \n path => [\""+logFilePath+"/"+fileName+".*"+"\"] \n type => \""+fileName+"\" \n}\n}\n"
         input += inputStr
 
-        outputStr = "if [type] == \""+FileName+"\" { \n elasticsearch{ \n hosts => [\"http://localhost:9200\"] \n index => \""+FileName.lower()+"\"\n}\n}\n"
+        outputStr = "if [type] == \""+fileName+"\" { \n elasticsearch{ \n hosts => [\"http://localhost:9200\"] \n index => \""+fileName.lower()+"\"\n}\n}\n"
         output += outputStr
 
     fileInfo.write(input)
