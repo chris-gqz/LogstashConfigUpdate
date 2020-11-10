@@ -7,7 +7,7 @@ def getFileNamesByLogFile(logFilePath):
 
     for _, _, fileNames in os.walk(logFilePath):
         for fileName in fileNames:
-            fileNamesDict[fileName.split(".")[0]] = "1"
+            fileNamesDict[fileName.split(".")[0]] = True
 
     return fileNamesDict
 
@@ -19,7 +19,7 @@ def getIndexNamesByConfig(configFilePath):
 
     for line in fileInfo:
         if "type =>" in line:
-            indexNamesDict[line.split('"')[1]] = "1"
+            indexNamesDict[line.split('"')[1]] = True
 
     return indexNamesDict
 
